@@ -70,9 +70,32 @@ function printQuote() {
     <p class="source">${source}<span class="year">${year}</span></p>
   `;
   }
+
   // returning result inserting it into box div
   return box.innerHTML= html;
 }
+
+//geting rangom color
+function randomColor() {
+    return '#' + Math.random().toString(16).substring(9);
+}
+
+// Seting time to refresh the page and changing a background color of the page.
+setInterval(function () {
+    //getting random color
+    let random = randomColor();
+    // updating the quote
+    printQuote();
+    //geting the update button
+    let button = document.getElementById("loadQuote");
+    //updating background color and the button color
+    document.body.style.backgroundColor = random;
+    button.style.background = random;
+
+    
+}, 5000);
+
+
 
 // updating quote on click event on "Show another quote" button
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
